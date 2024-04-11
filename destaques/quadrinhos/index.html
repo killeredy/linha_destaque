@@ -1,0 +1,116 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+  </head>
+  <body>
+
+  <div class="hq-conteiner">
+    <img src="img/bg.png" class="hq-bg">
+    <div class="hq-page-content">
+      <div class="hq-page" id="page">
+          <div class="hq-scroll">
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const speed = 2;
+    const altWindows =  document.querySelector('.hq-conteiner').getBoundingClientRect().height;
+    const content =   document.querySelector('.hq-scroll');
+    const altTotal = 1500;
+    const alt =  altTotal / 5;
+    const larg = document.querySelector('.hq-scroll').offsetWidth / 2;
+    const qt =  [
+      { render: true, larg: 1, alt:1, img: '01'}, { render: true,  larg: 1,  alt:2,  img: '02' },
+      { render: true, larg: 1, alt:1, img: '03'}, { render: false,  larg: 1,  alt:1,  img: null   },
+      { render: true, larg: 1, alt:1, img: '04'}, { render: true,  larg: 1,  alt:1,  img: '05' },
+      { render: true, larg: 1, alt:2, img: '06'}, { render: true,  larg: 1,  alt:1,  img: '07' },
+      { render: false, larg: 1, alt:1, img: null}, { render: true,  larg: 1,  alt:1,  img: '08' },
+      { render: true, larg: 2, alt:1, img: '09'}, 
+
+    ];
+
+    var contX = 0;
+    for (let i = 0; i < qt.length; i++) {
+      var left =  (i % 2 == 0);
+
+
+      var box =  document.createElement("div");
+      box.classList =  'hq-img';
+      box.style.top =  (alt * contX) + 'px';
+      box.style.height =  alt + "px";
+      box.style.width =  larg + "px";
+      box.id = "box-" + i;
+
+      if(!qt[i].render){
+          box.style.backgroundColor =  "transparent";
+      }else{
+        var img =  document.createElement("div");
+        if(i > 4){
+          img.classList =  "open";
+          
+        }
+        img.classList.add("img-" + qt[i].img);
+        img.style.width = ((100 * qt[i].larg) -10 )+ "%"
+        img.style.height = ((100 * qt[i].alt) - 10)+ "%"
+        img.style.backgroundImage =  'url("img/'+ qt[i].img + '.png")';
+        img.innerHtml =  "box " + i;
+        box.appendChild(img);
+      }
+
+      if(left){
+        box.classList.add("left")
+      }else{
+        box.style.right = '0px';
+        contX++;
+      }
+      content.appendChild(box);
+    }
+
+
+    
+
+function step() {
+        let imgs =  document.querySelectorAll('.hq-img');
+        let lefts =  document.querySelectorAll('.hq-img.left')
+        let last =  imgs[ lefts.length -1  ];
+        imgs.forEach(function(e, i){
+            var x =  e.offsetTop - speed;
+            var alt = e.clientHeight;
+            var alPosx =  x + alt;
+            e.style.top =  x + "px";
+
+            if(alPosx/2 <= (altWindows / 2) && e.querySelector('div') != null){
+                e.querySelector('div').classList.remove('open');
+            }
+
+
+            if(alPosx <= (alt *-1)){
+              if(e.querySelector('div') != null){
+                e.querySelector('div').classList.add('open');
+              }
+                content.appendChild(e);
+                let postlast =  last.offsetTop + last.clientHeight + 10;
+                e.style.top =   (altTotal - (alt )) + 'px';
+                // e.style.top =   ('1200px');
+            }
+        });
+        window.requestAnimationFrame(step)
+}
+
+window.requestAnimationFrame(step);
+
+
+
+    
+  </script>
+    
+  </body>
+  </html>
+  

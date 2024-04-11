@@ -1,0 +1,301 @@
+<html lang="en"><script type="text/javascript">
+    window["_gaUserPrefs"] = { ioo : function() { return true; } }</script><head>
+    <title>three.js webgl - FBX loader</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            font-family: Monospace;
+            color: #fff;
+            margin: 0px;
+            overflow: hidden;
+            height: 600px;
+        }
+        #info {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display:block;
+        }
+
+        #conteiner_canvas{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .bg_canvas{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: white;
+            background: radial-gradient(circle, #49aedf 0%, #01203c 100%);
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <script src="build/three.js"></script>
+
+    <script src="js/loaders/FBXLoader.js"></script>
+    <script src="js/libs/inflate.min.js"></script>
+
+    <script src="js/postprocessing/EffectComposer.js"></script>
+    <script src="js/postprocessing/RenderPass.js"></script>
+    <script src="js/postprocessing/SAOPass.js"></script> -->
+
+    <div class="bg_canvas"></div>
+    <div id='conteiner_canvas'>
+        <canvas id='myCanvas' width="1000" height="600" style="width: 1000; height: 600px;"></canvas>
+    </div>
+   
+
+    <script type="module">
+
+    import * as THREE from './build/three.module.js';
+
+    import { FBXLoader } from './jsm/loaders/FBXLoader.js';
+    // import { inflate } from './jsm/libs/inflate.min.js';
+
+    import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+    import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from './jsm/postprocessing/UnrealBloomPass.js';
+    import { OrbitControls } from './jsm/controls/OrbitControls.js';
+
+        var lagura = window.innerWidth;
+        var altura =  window.innerHeight;
+        var canvas = document.getElementById('myCanvas');
+        var personagem, globo, composer, renderPass, saoPass;
+
+
+        var altura =  600;
+
+
+        var scala = 0.05;
+        var container, stats, controls;
+        var camera, scene, renderer, luzAmbiente;
+
+        var clock = new THREE.Clock();
+        var actionIde, actionIntro;
+
+        var mixers = [];
+
+        var targetRotationX = -1.5;
+        var targetRotationOnMouseDownX = -1.5;
+        var mouseX = 0;
+        var mouseYOnMouseDown = 0;
+        var windowHalfX = window.innerWidth / 2;
+
+        
+
+        init();
+        animate();
+
+        function init() {
+
+            container = document.createElement( 'div' );
+            document.body.appendChild( container );
+
+            camera = new THREE.PerspectiveCamera( 60, lagura / altura, 1, 2000 );
+            camera.position.set( 0, -0.2, 5);
+            camera.rotation.x = 0.1;
+
+
+
+
+            scene = new THREE.Scene();
+            // scene.background = new THREE.Color( 0x0000 );
+
+            var luzAmbiente = new THREE. HemisphereLight (); // soft white light
+            luzAmbiente.position.set(0,10,0)
+            luzAmbiente.color = new THREE.Color("rgb(143, 197, 255)");
+            luzAmbiente.groundColor = new THREE.Color("rgb(255, 250, 210)");
+            luzAmbiente.intensity = 1
+            scene.add( luzAmbiente );
+
+            var luz02 = new THREE.PointLight( 0xDCDCDC, 50, 100 );
+            luz02.name = "luz02_roxo";
+            luz02.position.set( 20, 20, -25 );
+            luz02.intensity = 7;
+            // luz02.distance = 10;
+            luz02.castShadow = true;
+            luz02.color = new THREE.Color("rgb(244, 31, 198)");
+            scene.add( luz02 );
+
+
+            var luz03 = new THREE.PointLight( 0xDCDCDC, 50, 100 );
+            luz03.name = "luz03_vermelha";
+            luz03.position.set( 24.867 , 29.377 , 18.036 );
+            luz03.intensity = 2;
+            luz03.distance = 3;
+            luz03.castShadow = true;
+            luz03.color = new THREE.Color("rgb(255, 0, 0)");            
+            
+
+
+            // model
+            var manager = new THREE.LoadingManager();
+            manager.onProgress = function( item, loaded, total ) {
+                console.log( item, loaded, total );
+            };
+
+            var onProgress = function( xhr ) {
+                if ( xhr.lengthComputable ) {
+                    var percentComplete = xhr.loaded / xhr.total * 100;
+                    console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
+                }
+            };
+
+            var onError = function( xhr ) {
+            };
+
+            var loader = new FBXLoader( manager );
+            loader.load( 'perso_fbx.fbx', function( object ) {      
+
+                    scene.add( object );
+                    object.rotation.y = -1.5;
+                    object.scale.set(0.1,0.1,0.1);
+                    object.position.set(0.7, -3, 0)
+                    personagem = object;
+
+                    object.add( luz03 );
+
+                    // object.traverse( function ( child ) {
+                    //     if(child.name =='boneBraco00'){
+                    //         child.rotation.y += -1.5;
+                    //         console.log(child.rotation);//
+                    //     }
+                    // })
+                                      
+
+    
+                            
+                    if ( object.animations !== undefined || object.morphAnimations !== undefined ) {
+
+                        object.mixer = new THREE.AnimationMixer( object );
+                        mixers.push( object.mixer );
+
+                        var anima = object.mixer.clipAction( object.animations[ 0 ] )
+                        var intro = THREE.AnimationUtils.subclip( object.animations[ 0 ], 'ide',  0,  49, 24  ).optimize();
+                        var ide   = THREE.AnimationUtils.subclip( object.animations[ 0 ], 'loop', 49, 250, 24 ).optimize();
+
+                        actionIde    =  object.mixer.clipAction( ide )
+                        actionIntro  =  object.mixer.clipAction( intro )
+
+                        actionIntro.setLoop(THREE.LoopOnce);
+                        actionIntro.play();
+                    }
+                  
+
+                    object.mixer.addEventListener( 'finished', function( e ) {
+                        actionIde.play();
+                    } )
+                    
+
+            }, onProgress, onError );
+
+            var loader = new FBXLoader( manager );
+            loader.load( 'globo.fbx', function( object ) {
+                object.scale.set(0.2, 0.2, 0.2);
+                object.position.set(20, -7, -20);
+                globo = object.children[0];
+                globo.material.uniform
+                scene.add( object );
+            })
+
+            renderer = new THREE.WebGLRenderer({ alpha: true , antialias: true});
+            renderer.setClearColor(0xffffff, 0);
+            renderer.setClearAlpha(0)
+            renderer.setPixelRatio( window.devicePixelRatio );
+            renderer.setSize( lagura, altura );
+            container.appendChild( renderer.domElement );
+            renderPass = new RenderPass( scene, camera );
+
+            var params = {
+				// exposure: 1,
+				bloomStrength: 0.3,
+				bloomThreshold: 0,
+				bloomRadius: 0
+			};
+            
+
+            var renderScene = new RenderPass( scene, camera );
+			var bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+			bloomPass.threshold = params.bloomThreshold;
+			bloomPass.strength = params.bloomStrength;
+			bloomPass.radius = params.bloomRadius;
+
+			composer = new EffectComposer( renderer );
+			composer.addPass( renderScene );
+			composer.addPass( bloomPass );
+
+
+           
+            window.addEventListener( 'resize', onWindowResize, false );
+            document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+           
+        }
+
+        function onDocumentMouseDown( event ) {
+            event.preventDefault();
+            window.addEventListener( 'mousemove', onDocumentMouseMove, false );
+            window.addEventListener( 'mouseup', onDocumentMouseUp, false );
+            window.addEventListener( 'mouseout', onDocumentMouseOut, false );
+            mouseYOnMouseDown = event.clientX - windowHalfX;
+            targetRotationOnMouseDownX = targetRotationX;
+            console.log('teste');
+        }
+
+        function onDocumentMouseMove( event ) {
+            mouseX = event.clientX - windowHalfX;
+            personagem.rotation.y = targetRotationOnMouseDownX + (mouseX - mouseYOnMouseDown) * 0.02;
+        }
+
+        function onDocumentMouseUp( event ) {
+            window.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+            window.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+            window.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+        }
+
+        function onDocumentMouseOut( event ) {
+            window.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+            window.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+            window.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+        }
+
+        function onWindowResize() {
+                camera.aspect = lagura / altura;
+                camera.updateProjectionMatrix();
+                renderer.setSize( lagura, altura );
+        }
+
+        function animate() {
+                requestAnimationFrame( animate );
+                if ( mixers.length > 0 ) {
+                    for ( var i = 0; i < mixers.length; i ++ ) {
+                        mixers[ i ].update( clock.getDelta() );
+                    }
+                }
+                // controls.update();
+                render();
+                // globo.rotation.y += 0.008;
+                // globo.rotation.x += 0.002;
+        }
+
+        function render() {
+            // renderer.render( scene, camera );
+            composer.render();
+        }
+
+    </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+
+  <meta name="generator" content="Google Web Designer 8.0.3.0603">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+  <script src="code.js"></script>
+  <style type="text/css" id="gwd-text-style">p {
+    margin: 0px;
+		}
+		h1 {
+			margin: 0px;
+		}
+		h2 {
+			margin: 0px;
+		}
+		h3 {
+			margin: 0px;
+		}
+
+		p{
+			margin: 10px 0;
+		}
+
+</style>
+<style type="text/css">
+html,
+body {
+	height: 100vh;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    perspective: 1400px;
+    -webkit-perspective: 1400px;
+    -moz-perspective: 1400px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+	background: rgb(50,115,133);
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html{
+    overflow: hidden;
+}
+
+span{
+    opacity: 0;
+}
+
+span.show0{
+	opacity: 0.2;	
+}
+
+span.show1{
+	opacity: 1;
+}
+
+#box-texto {
+	position: absolute;
+	height: 100%;
+	left: 53%;
+	top: 0px;
+	transform-origin: 50% 0%;;
+	transform: translateX(-20%) translateY(128px) translateZ(400px) translateZ(40px) rotateX(15deg) rotateZ(-5deg);
+} 
+
+
+.linhas{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: repeating-linear-gradient(0deg, rgba(105, 105, 105, 0.5), rgba(105, 105, 105, 0.5) 5px, rgba(255, 255, 255, 0) 5px, rgba(255, 255, 255, 0) 10px);
+	transform:  rotateZ(-3deg);
+}
+
+
+</style>
+</head>
+
+<body class="htmlNoPages">
+
+  <div id='box-texto'>
+        <p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">btGraficoLinha</span> <span style="color: #d0d0d0;">=</span> <span style="color: #24909d;">document</span><span style="color: #d0d0d0;">.getElementById(</span><span style="color: #ed9d13;">'btGrafLinhas'</span><span style="color: #d0d0d0;">)</span> </p>
+        <p>    <span style="color: #d0d0d0;">btGraficoLinha.addEventListener(</span><span style="color: #ed9d13;">'click'</span><span style="color: #d0d0d0;">,</span> <span style="color: #d0d0d0;">abrirGaficosLinhas,</span>  <span style="color: #6ab825; font-weight: bold;">true</span><span style="color: #d0d0d0;">)</span> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">graficLinhaMode</span> <span style="color: #d0d0d0;">=</span> <span style="color: #6ab825; font-weight: bold;">false</span>  </p>
+		<p> </p>
+		<p> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">opcoesLinhas</span> <span style="color: #d0d0d0;">=</span> <span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>	<span style="color: #d0d0d0;">//</span> <span style="color: #bbbbbb;">legend</span><span style="color: #d0d0d0;">:</span> <span style="color: #6ab825; font-weight: bold;">null</span><span style="color: #d0d0d0;">,</span> </p>
+		<p>	<span style="color: #bbbbbb;">vAxis</span><span style="color: #d0d0d0;">:</span> <span style="color: #d0d0d0;">{</span><span style="color: #bbbbbb;">title</span><span style="color: #d0d0d0;">:</span> <span style="color: #ed9d13;">'teste'</span><span style="color: #cd2828; font-weight: bold;">}</span><span style="color: #d0d0d0;">,</span> </p>
+        <p>	<span style="color: #d0d0d0;">chartArea:</span><span style="color: #cd2828; font-weight: bold;">{</span><span style="color: #447fcf;">left</span><span style="color: #d0d0d0;">:</span><span style="color: #ed9d13;">'10%'</span><span style="color: #d0d0d0;">,</span><span style="color: #bbbbbb;">top</span><span style="color: #d0d0d0;">:</span><span style="color: #ed9d13;">'0%'</span><span style="color: #d0d0d0;">,</span><span style="color: #bbbbbb;">width</span><span style="color: #d0d0d0;">:</span><span style="color: #ed9d13;">'90%'</span><span style="color: #d0d0d0;">,</span><span style="color: #bbbbbb;">height</span><span style="color: #d0d0d0;">:</span><span style="color: #ed9d13;">'80%'</span><span style="color: #cd2828; font-weight: bold;">}</span><span style="color: #d0d0d0;">,</span> </p>
+        <p>	<span style="color: #d0d0d0;">backgroundColor:</span> <span style="color: #cd2828; font-weight: bold;">{</span> <span style="color: #bbbbbb;">fill</span><span style="color: #d0d0d0;">:</span><span style="color: #ed9d13;">'transparent'</span> <span style="color: #cd2828; font-weight: bold;">}</span><span style="color: #d0d0d0;">,</span> </p>
+        <p>    <span style="color: #d0d0d0;">}</span> </p>
+		<p> </p>
+		<p> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">function</span> <span style="color: #d0d0d0;">abrirGraficosLinhas</span> <span style="color: #d0d0d0;">()</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    <span style="color: #bbbbbb;">console</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">log</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">graficLinhaMode</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #bbbbbb;">if</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">graficLinhaMode</span><span style="color: #d0d0d0;">){</span><span style="color: #bbbbbb;">return</span><span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p>    <span style="color: #d0d0d0;">graficLinhaMode</span> <span style="color: #d0d0d0;">=</span> <span style="color: #6ab825; font-weight: bold;">true</span> </p>
+		<p>    <span style="color: #d0d0d0;">graficPizzaMode</span> <span style="color: #d0d0d0;">=</span> <span style="color: #6ab825; font-weight: bold;">false</span> </p>
+		<p> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">if</span><span style="color: #d0d0d0;">(</span> 	<span style="color: #24909d;">document</span><span style="color: #d0d0d0;">.getElementById(</span><span style="color: #ed9d13;">'areaGraficos'</span><span style="color: #d0d0d0;">)</span>		<span style="color: #d0d0d0;">)</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    	<span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementById</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'areaGraficos'</span><span style="color: #d0d0d0;">).</span><span style="color: #bbbbbb;">remove</span><span style="color: #d0d0d0;">()</span> </p>
+		<p>    <span style="color: #cd2828; font-weight: bold;">}</span>			 </p>
+		<p>    <span style="color: #d0d0d0;">google.charts.load(</span><span style="color: #ed9d13;">'current'</span><span style="color: #d0d0d0;">,</span> <span style="color: #cd2828; font-weight: bold;">{</span><span style="color: #ed9d13;">'packages'</span><span style="color: #d0d0d0;">:[</span><span style="color: #ed9d13;">'corechart'</span><span style="color: #d0d0d0;">]</span><span style="color: #cd2828; font-weight: bold;">}</span><span style="color: #d0d0d0;">);</span> </p>
+		<p>    <span style="color: #d0d0d0;">mostraTodasLinhas()</span> </p>
+		<p>    <span style="color: #d0d0d0;">criarAriaLinha()</span> </p>
+		<p>    <span style="color: #d0d0d0;">ajustarTamanhoLinha()</span> </p>
+		<p>    <span style="color: #d0d0d0;">esconderMenuDisplayLinhas()</span> </p>
+		<p>    <span style="color: #d0d0d0;">mostraPontosCores()</span> </p>
+		<p>    <span style="color: #d0d0d0;">retirarComparacaoVisaMaster()</span> </p>
+		<p> </p>
+		<p>    <span style="color: #d0d0d0;">google.charts.load(</span><span style="color: #ed9d13;">'current'</span><span style="color: #d0d0d0;">,</span> <span style="color: #cd2828; font-weight: bold;">{</span><span style="color: #ed9d13;">'packages'</span><span style="color: #d0d0d0;">:[</span><span style="color: #ed9d13;">'corechart'</span><span style="color: #d0d0d0;">]</span><span style="color: #cd2828; font-weight: bold;">}</span><span style="color: #d0d0d0;">);</span> </p>
+		<p> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">gerais</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">[]</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">linhas</span> <span style="color: #d0d0d0;">=</span> <span style="color: #24909d;">document</span><span style="color: #d0d0d0;">.querySelectorAll(</span><span style="color: #ed9d13;">'.normal, .mix'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">for</span><span style="color: #d0d0d0;">(</span><span style="color: #6ab825; font-weight: bold;">let</span> <span style="color: #d0d0d0;">i</span> <span style="color: #d0d0d0;">=</span> <span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">;</span> <span style="color: #d0d0d0;">i&lt;linhas.length;</span> <span style="color: #d0d0d0;">i++)</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    <span style="color: #bbbbbb;">gerais</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">push</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">linhas</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">id</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #bbbbbb;">linhas</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">getElementsByTagName</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'div'</span><span style="color: #d0d0d0;">)[</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">style</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">transitionDelay</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">i</span> <span style="color: #d0d0d0;">/</span><span style="color: #3677a9;">50</span> <span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">+</span><span style="color: #ed9d13;">'s'</span> </p>
+		<p>    <span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">dadosGerias</span> <span style="color: #d0d0d0;">=</span>  <span style="color: #d0d0d0;">gerarDadosLinhas(gerais,</span> <span style="color: #d0d0d0;">(-</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">))</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">dadosFixVar</span> <span style="color: #d0d0d0;">=</span>  <span style="color: #d0d0d0;">gerarDadosLinhas([</span><span style="color: #ed9d13;">'fixo'</span><span style="color: #d0d0d0;">,</span> <span style="color: #ed9d13;">'variavel'</span><span style="color: #d0d0d0;">],</span> <span style="color: #d0d0d0;">(-</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">))</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">graficoDespRece</span> <span style="color: #d0d0d0;">=</span>  <span style="color: #d0d0d0;">gerarDadosLinhas([</span><span style="color: #ed9d13;">'totaldespesas'</span><span style="color: #d0d0d0;">,</span> <span style="color: #ed9d13;">'receitas'</span><span style="color: #d0d0d0;">],</span> <span style="color: #d0d0d0;">(-</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">))</span> </p>
+		<p>    <span style="color: #d0d0d0;">gerarGrafLinhas(dadosGerias,</span> <span style="color: #d0d0d0;">opcoesLinhas,</span> <span style="color: #ed9d13;">'graficoGerias'</span><span style="color: #d0d0d0;">,</span> <span style="color: #ed9d13;">'GASTOS GERAIS'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #d0d0d0;">gerarGrafLinhas(dadosFixVar,</span> <span style="color: #d0d0d0;">opcoesLinhas,</span> <span style="color: #ed9d13;">'graficoFixVar'</span><span style="color: #d0d0d0;">,</span> <span style="color: #ed9d13;">'FIXOS X VARIAVEIS'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #d0d0d0;">gerarGrafLinhas(graficoDespRece,</span> <span style="color: #d0d0d0;">opcoesLinhas,</span> <span style="color: #ed9d13;">'graficoDespRece'</span><span style="color: #d0d0d0;">,</span> <span style="color: #ed9d13;">'RECEITA X DESPESAS'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">areaGrafico</span> <span style="color: #d0d0d0;">=</span> <span style="color: #24909d;">document</span><span style="color: #d0d0d0;">.getElementById(</span><span style="color: #ed9d13;">'areaGraficos'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">graficos</span> <span style="color: #d0d0d0;">=</span> <span style="color: #24909d;">document</span><span style="color: #d0d0d0;">.querySelectorAll(</span><span style="color: #ed9d13;">'.areGraficosLinha'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #d0d0d0;">areaGrafico.classList.add(</span><span style="color: #ed9d13;">'grafAberto'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #d0d0d0;">areaGraficos.addEventListener(</span><span style="color: #ed9d13;">'transitionend'</span><span style="color: #d0d0d0;">,</span> <span style="color: #6ab825; font-weight: bold;">function</span><span style="color: #d0d0d0;">()</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>	<span style="color: #bbbbbb;">for</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">let</span> <span style="color: #bbbbbb;">i</span> <span style="color: #d0d0d0;">=</span> <span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">;</span> <span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">&lt;</span><span style="color: #bbbbbb;">graficos</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">length</span><span style="color: #d0d0d0;">;</span> <span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">++){</span> </p>
+		<p>	<span style="color: #bbbbbb;">graficos</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">style</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">opacity</span> <span style="color: #d0d0d0;">=</span> <span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">;</span> </p>
+		<p>	<span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p>    <span style="color: #d0d0d0;">})</span> </p>
+        <p>    <span style="color: #d0d0d0;">}</span> </p>
+<p> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">function</span> <span style="color: #d0d0d0;">mostraPontosCores()</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+	    <p>    <span style="color: #bbbbbb;">console</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">log</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'ok'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">linhas</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">querySelectorAll</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'.corpoTab'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #bbbbbb;">linhas</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">forEach</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">function</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">element</span><span style="color: #d0d0d0;">,</span> <span style="color: #bbbbbb;">index</span><span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">{</span> </p>
+		<p>	<span style="color: #bbbbbb;">element</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementsByTagName</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'div'</span><span style="color: #d0d0d0;">)[</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">classList</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">add</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'amostraCor_aberto'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #cd2828; font-weight: bold;">}</span><span style="color: #d0d0d0;">);</span> </p>
+        <p>    <span style="color: #d0d0d0;">}</span> </p>
+<p> </p>
+<p> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">function</span> <span style="color: #d0d0d0;">mudarGraficoLinha(obj)</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    <span style="color: #bbbbbb;">if</span><span style="color: #d0d0d0;">(!</span><span style="color: #bbbbbb;">graficLinhaMode</span><span style="color: #d0d0d0;">){</span> <span style="color: #bbbbbb;">return</span> <span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">if</span><span style="color: #d0d0d0;">(</span> <span style="color: #d0d0d0;">!obj.parentNode.classList.contains(</span><span style="color: #ed9d13;">'normal'</span><span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">&amp;&amp;</span> <span style="color: #d0d0d0;">!obj.parentNode.classList.contains(</span><span style="color: #ed9d13;">'mix'</span><span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">)</span><span style="color: #cd2828; font-weight: bold;">{</span> <span style="color: #bbbbbb;">return</span> <span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p>    <span style="color: #d0d0d0;">obj.classList.toggle(</span><span style="color: #ed9d13;">'btGraficoTransparent'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">familia</span> <span style="color: #d0d0d0;">=</span> <span style="color: #24909d;">document</span><span style="color: #d0d0d0;">.querySelectorAll(</span><span style="color: #ed9d13;">'.normal, .mix'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">linhas</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">[]</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">pai</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">obj.parentNode</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">myAtivo</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">pai.getAttribute(</span><span style="color: #ed9d13;">'ativo'</span><span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">==</span> <span style="color: #ed9d13;">'true'</span> </p>
+		<p>    <span style="color: #d0d0d0;">myAtivo</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">myAtivo</span> <span style="color: #d0d0d0;">?</span> <span style="color: #6ab825; font-weight: bold;">false</span> <span style="color: #d0d0d0;">:</span> <span style="color: #6ab825; font-weight: bold;">true</span> </p>
+		<p>    <span style="color: #d0d0d0;">pai.setAttribute(</span><span style="color: #ed9d13;">'ativo'</span><span style="color: #d0d0d0;">,</span>  <span style="color: #d0d0d0;">myAtivo.toString()</span> <span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">for</span><span style="color: #d0d0d0;">(</span><span style="color: #6ab825; font-weight: bold;">let</span> <span style="color: #d0d0d0;">i</span> <span style="color: #d0d0d0;">=</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">;</span> <span style="color: #d0d0d0;">i&lt;familia.length;</span> <span style="color: #d0d0d0;">i++)</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">ativo</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">familia</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">getAttribute</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'ativo'</span><span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">==</span> <span style="color: #ed9d13;">'true'</span> </p>
+		<p>    <span style="color: #bbbbbb;">if</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">ativo</span> <span style="color: #d0d0d0;">){</span> </p>
+		<p>	<span style="color: #bbbbbb;">linhas</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">push</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">familia</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">id</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p>    <span style="color: #d0d0d0;">}</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">dados</span> <span style="color: #d0d0d0;">=</span>  <span style="color: #d0d0d0;">gerarDadosLinhas(linhas,</span> <span style="color: #d0d0d0;">(-</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">))</span> </p>
+		<p>    <span style="color: #d0d0d0;">gerarGrafLinhas(dados,</span> <span style="color: #d0d0d0;">opcoesLinhas,</span> <span style="color: #ed9d13;">'graficoGerias'</span><span style="color: #d0d0d0;">,</span> <span style="color: #ed9d13;">'GASTOS GERAIS'</span><span style="color: #d0d0d0;">)</span> </p>
+        <p>    <span style="color: #d0d0d0;">}</span> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">function</span> <span style="color: #d0d0d0;">ajustarTamanhoLinha()</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+	    <p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">tamTitulos</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementsByTagName</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'td'</span><span style="color: #d0d0d0;">)[</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">getBoundingClientRect</span><span style="color: #d0d0d0;">()</span> </p>
+	    <p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">tamAreaGraf</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementById</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'areaGraficos'</span><span style="color: #d0d0d0;">).</span><span style="color: #bbbbbb;">getBoundingClientRect</span><span style="color: #d0d0d0;">().</span><span style="color: #bbbbbb;">width</span> </p>
+	    <p>    <span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementById</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'areaGraficos'</span><span style="color: #d0d0d0;">).</span><span style="color: #bbbbbb;">style</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">width</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">tamAreaGraf</span> <span style="color: #d0d0d0;">-</span> <span style="color: #bbbbbb;">tamTitulos</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">left</span> <span style="color: #d0d0d0;">-</span> <span style="color: #3677a9;">5</span><span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">+</span> <span style="color: #ed9d13;">'px'</span> </p>
+        <p>    <span style="color: #cd2828; font-weight: bold;">}</span> </p>
+    <p> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">function</span> <span style="color: #d0d0d0;">criarAriaLinha()</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">areaGrafico</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementById</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'conteinerGraficos'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>    <span style="color: #bbbbbb;">areaGrafico</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">innerHTML</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">ariaGraficoLinhas</span><span style="color: #d0d0d0;">()</span> </p>
+		<p>    <span style="color: #bbbbbb;">areaGrafico</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">style</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">display</span> <span style="color: #d0d0d0;">=</span> <span style="color: #ed9d13;">'block'</span> </p>
+        <p>    <span style="color: #cd2828; font-weight: bold;">}</span> </p>
+    <p> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">function</span> <span style="color: #d0d0d0;">gerarGrafLinhas(dados,</span> <span style="color: #d0d0d0;">opcoes,</span> <span style="color: #d0d0d0;">onde,</span> <span style="color: #d0d0d0;">nome)</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+	    <p>    <span style="color: #bbbbbb;">google</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">charts</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">setOnLoadCallback</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">drawChart</span><span style="color: #d0d0d0;">);</span> </p>
+	    <p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">meusDados</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">dados</span><span style="color: #d0d0d0;">[</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">]</span> </p>
+	    <p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">minhasCores</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">dados</span><span style="color: #d0d0d0;">[</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">]</span> </p>
+	    <p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">myDiv</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementById</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">onde</span><span style="color: #d0d0d0;">)</span> </p>
+	    <p>    <span style="color: #bbbbbb;">function</span> <span style="color: #bbbbbb;">drawChart</span><span style="color: #d0d0d0;">()</span> <span style="color: #d0d0d0;">{</span> </p>
+        <p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">grafico</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">google</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">visualization</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">arrayToDataTable</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">meusDados</span> <span style="color: #d0d0d0;">);</span> </p>
+        <p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">chart</span>   <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">new</span> <span style="color: #bbbbbb;">google</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">visualization</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">LineChart</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">myDiv</span> <span style="color: #d0d0d0;">);</span> </p>
+        <p>    <span style="color: #bbbbbb;">opcoes</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">vAxis</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">title</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">nome</span><span style="color: #d0d0d0;">,</span> </p>
+        <p>    <span style="color: #bbbbbb;">opcoes</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">colors</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">minhasCores</span><span style="color: #d0d0d0;">,</span> </p>
+        <p>    <span style="color: #bbbbbb;">chart</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">draw</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">grafico</span><span style="color: #d0d0d0;">,</span> <span style="color: #bbbbbb;">opcoes</span><span style="color: #d0d0d0;">);</span> </p>
+        <p>    <span style="color: #cd2828; font-weight: bold;">}</span> </p>
+        <p>    <span style="color: #d0d0d0;">}</span> </p>
+        <p>    <span style="color: #6ab825; font-weight: bold;">function</span> <span style="color: #d0d0d0;">gerarDadosLinhas(tipos,</span> <span style="color: #d0d0d0;">invert)</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">meses</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">mesesAtivos</span><span style="color: #d0d0d0;">()</span> </p>
+		<p>    <span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">titulos</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">[]</span> </p>
+		<p>    <span style="color: #bbbbbb;">titulos</span><span style="color: #d0d0d0;">[</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">]</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">{</span><span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p>    <span style="color: #d0d0d0;">titulos[</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">].label</span> <span style="color: #d0d0d0;">=</span> <span style="color: #ed9d13;">'tipos'</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">dados</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">[]</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">valor</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">cores</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">[</span><span style="color: #ed9d13;">'black'</span><span style="color: #d0d0d0;">]</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">var</span> <span style="color: #d0d0d0;">inf</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">for</span><span style="color: #d0d0d0;">(</span> <span style="color: #6ab825; font-weight: bold;">let</span> <span style="color: #d0d0d0;">i</span> <span style="color: #d0d0d0;">=</span> <span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">;</span> <span style="color: #d0d0d0;">i&lt;tipos.length+</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">;</span> <span style="color: #d0d0d0;">i++)</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    <span style="color: #bbbbbb;">myCor</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementById</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">tipos</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">-</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">]).</span><span style="color: #bbbbbb;">getElementsByTagName</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'div'</span><span style="color: #d0d0d0;">)[</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">].</span><span style="color: #bbbbbb;">style</span><span style="color: #d0d0d0;">[</span><span style="color: #ed9d13;">'background-color'</span><span style="color: #d0d0d0;">]</span> </p>
+		<p> </p>
+        <p> </p>
+        <p>    <span style="color: #bbbbbb;">titulos</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">]</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">{</span><span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p>    <span style="color: #d0d0d0;">titulos[i].label</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">tipos[i-</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">]</span> </p>
+		<p>    <span style="color: #d0d0d0;">cores[i-</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">]</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">myCor</span> </p>
+		<p>    <span style="color: #d0d0d0;">}</span> </p>
+		<p>    <span style="color: #d0d0d0;">dados[</span><span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">]</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">titulos</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">for</span><span style="color: #d0d0d0;">(</span><span style="color: #6ab825; font-weight: bold;">let</span> <span style="color: #d0d0d0;">i</span> <span style="color: #d0d0d0;">=</span> <span style="color: #3677a9;">0</span> <span style="color: #d0d0d0;">;</span> <span style="color: #d0d0d0;">i&lt;</span> <span style="color: #d0d0d0;">listMeses.length;</span> <span style="color: #d0d0d0;">i++)</span><span style="color: #cd2828; font-weight: bold;">{</span> </p>
+		<p>    <span style="color: #bbbbbb;">if</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">meses</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">indexOf</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">listMeses</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">]</span> <span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">!=</span> <span style="color: #d0d0d0;">-</span><span style="color: #3677a9;">1</span><span style="color: #d0d0d0;">){</span> </p>
+		<p>	<span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">d</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">[</span> <span style="color: #bbbbbb;">listMeses</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">]</span> <span style="color: #d0d0d0;">]</span> </p>
+		<p>			 </p>
+		<p>	<span style="color: #bbbbbb;">for</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">let</span> <span style="color: #bbbbbb;">j</span> <span style="color: #d0d0d0;">=</span> <span style="color: #3677a9;">0</span><span style="color: #d0d0d0;">;</span> <span style="color: #bbbbbb;">j</span><span style="color: #d0d0d0;">&lt;</span><span style="color: #bbbbbb;">tipos</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">length</span><span style="color: #d0d0d0;">;</span> <span style="color: #bbbbbb;">j</span><span style="color: #d0d0d0;">++){</span> </p>
+		<p>	<span style="color: #bbbbbb;">var</span> <span style="color: #bbbbbb;">td</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">document</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getElementById</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">tipos</span><span style="color: #d0d0d0;">[</span><span style="color: #bbbbbb;">j</span><span style="color: #d0d0d0;">]</span> <span style="color: #d0d0d0;">).</span><span style="color: #bbbbbb;">getElementsByTagName</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'td'</span><span style="color: #d0d0d0;">)[</span><span style="color: #bbbbbb;">i</span><span style="color: #d0d0d0;">]</span> </p>
+		<p>	<span style="color: #bbbbbb;">valor</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">td</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">getAttribute</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'geral'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>	<span style="color: #bbbbbb;">valor</span> <span style="color: #d0d0d0;">=</span> <span style="color: #bbbbbb;">valor</span> <span style="color: #d0d0d0;">==</span> <span style="color: #6ab825; font-weight: bold;">null</span><span style="color: #d0d0d0;">?</span> <span style="color: #3677a9;">0</span> <span style="color: #d0d0d0;">:</span>	<span style="color: #bbbbbb;">valor</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">replace</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">'.'</span><span style="color: #d0d0d0;">,</span><span style="color: #ed9d13;">''</span><span style="color: #d0d0d0;">).</span><span style="color: #bbbbbb;">replace</span><span style="color: #d0d0d0;">(</span><span style="color: #ed9d13;">','</span><span style="color: #d0d0d0;">,</span><span style="color: #ed9d13;">'.'</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>	<span style="color: #bbbbbb;">valor</span> <span style="color: #d0d0d0;">=</span>    <span style="color: #bbbbbb;">Number</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">valor</span><span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">&lt;</span> <span style="color: #3677a9;">0</span> <span style="color: #d0d0d0;">?</span> <span style="color: #bbbbbb;">Number</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">valor</span><span style="color: #d0d0d0;">)</span> <span style="color: #d0d0d0;">*-</span><span style="color: #3677a9;">1</span> <span style="color: #d0d0d0;">:</span> <span style="color: #bbbbbb;">Number</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">valor</span><span style="color: #d0d0d0;">)</span> </p>
+		<p>	<span style="color: #bbbbbb;">d</span><span style="color: #d0d0d0;">.</span><span style="color: #bbbbbb;">push</span><span style="color: #d0d0d0;">(</span> <span style="color: #bbbbbb;">Number</span><span style="color: #d0d0d0;">(</span><span style="color: #bbbbbb;">valor</span><span style="color: #d0d0d0;">)</span>  <span style="color: #d0d0d0;">)</span> </p>
+		<p>	<span style="color: #cd2828; font-weight: bold;">}</span> </p>
+		<p>	<span style="color: #d0d0d0;">dados.push(d)</span> </p>
+		<p>    <span style="color: #d0d0d0;">}</span> </p>
+		<p>    <span style="color: #d0d0d0;">}</span> </p>
+ 		<p>    <span style="color: #d0d0d0;">inf</span> <span style="color: #d0d0d0;">=</span> <span style="color: #d0d0d0;">[</span> <span style="color: #d0d0d0;">dados,</span> <span style="color: #d0d0d0;">cores</span> <span style="color: #d0d0d0;">]</span> </p>
+		<p>    <span style="color: #6ab825; font-weight: bold;">return</span> <span style="color: #d0d0d0;">inf</span> </p>
+        <p>    <span style="color: #d0d0d0;">}</span> </p>
+         
+    <!-- </pre> -->
+  </div>
+  <div class="linhas">
+
+  </div>
+
+
+
